@@ -1,30 +1,30 @@
 // JavaScript Document
 
 $(document).ready(function(e) {
-    var watchID=null;
+    var watchID = null;
 	document.addEventListener("deviceready", Dispositivo_Listo, false);
 	function Dispositivo_Listo() {
 		Comienza();
 		}
 		
 		function Comienza() {
-			var opciones={frequency:2000};
+			var opciones = {frequency:2000};
 			
-			watchID=navigator.accelerometer.watchAcceleration(Correcto, Error, opciones);
+			watchID = navigator.accelerometer.watchAcceleration(Correcto, Error, opciones);
 			navigator.geolocation.getCurrentPosition(Localiza, ErrorLocalizacion);
 			}
 			
 			function Detente() {
 				if (watchID){
 					navigator.accelerometer.clearWatch(watchID);
-					watchID=null;
+					watchID = null;
 					}
 				
 				}
 				
 				function Correcto(acceleration){
 					var element = document.getElementById('acelerometro');
-					element.innerHTML = 'Aceleracion en X: ' + acceleratio.x +' <br/>'+ 
+					element.innerHTML = 'Aceleracion en X: ' + acceleratio.x + '<br/>'+ 
 					'Aceleracion en Y: ' + acceleratio.y +' <br/>'+
 					'Aceleracion en Z: ' + acceleratio.z +' <br/>'+
 					'Intervalo: ' + acceleration.timestamp +'<br/>';
@@ -34,7 +34,7 @@ $(document).ready(function(e) {
 						alert('Error!');
 						}
 						
-						function Localiza(position){
+						function Localiza(posicion){
 							
 							var element=document.getElementById('geolocalizacion');
 							element.innerHTML='Latitud: '+ posicion.coords.latitude +'<br/>'+
